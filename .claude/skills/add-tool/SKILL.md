@@ -35,7 +35,7 @@ Add it to `TOOLS` in `src/tools/index.ts`, in the order clients should see it. `
 
 ## 5. Docs
 
-Run the `update-docs` skill: the regenerated tools reference (`npm run tools` in `docs/`), any page that explains the tool, in English and Spanish.
+Run the `update-docs` skill: the regenerated tools reference (`npm run tools` in `docs/`, with the tool's Spanish title, description and inputs in `docs/scripts/tools.es.json`), any page that explains the tool, in English and Spanish.
 
 ## 6. Finish
 

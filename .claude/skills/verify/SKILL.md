@@ -24,7 +24,7 @@ cd docs && npm run tools && npm run build
 Notes:
 
 - Tests must report `fail 0`; quote the pass and fail counts. `npm run check` must end with "N tools, all complete"; quote the tool count.
-- `npm run tools` rewrites `docs/content/reference/tools.md` and its Spanish page from the bundle: if they changed, they go in the commit with the tool.
+- `npm run tools` rewrites `docs/content/reference/tools.md` and its Spanish page from the bundle, the Spanish one from `docs/scripts/tools.es.json`, and fails when a translation is missing or older than its English: if they changed, they go in the commit with the tool.
 - Nothing is left running: the check and the reference start the bundle and close it; if one hangs, look for a `node … dist/server.mjs` left behind.
 - Never "fix" a failure by weakening a rule, skipping a test or adding `any`. Find the cause.
 

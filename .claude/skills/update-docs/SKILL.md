@@ -21,7 +21,7 @@ Counts as visible: a tool added, removed or renamed; a tool's inputs, outputs, a
 
 | Change | Where |
 | --- | --- |
-| A tool added, removed or changed | Its description (that's what agents read), then `npm run tools` in `docs/` after `npm run build` at the root: it regenerates the reference in both languages; any page that explains it, and tool counts (`grep -rn "tools" docs/content docs/i18n README.md`) |
+| A tool added, removed or changed | Its description (that's what agents read), then `npm run tools` in `docs/` after `npm run build` at the root: it regenerates the reference in both languages, the Spanish from the translations in `docs/scripts/tools.es.json` (each with the English it translates: update both, or it fails and lists what); any page that explains it, and tool counts (`grep -rn "tools" docs/content docs/i18n README.md`) |
 | A setting | The site's page for settings, the README's quick start if it's needed to start, `server_info` |
 | A requirement | `getting-started` in both languages, and the extension's `plugin.json` in agent-extensions |
 | Usage rules for agents | `src/instructions.ts` (and its test) |

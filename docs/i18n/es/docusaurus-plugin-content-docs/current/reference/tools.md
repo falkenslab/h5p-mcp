@@ -7,56 +7,56 @@ sidebar_label: Herramientas
 
 # Herramientas
 
-Este servidor tiene **4 herramientas**. Esta página se genera a partir del propio servidor, así que las muestra tal como las recibe tu aplicación de IA, con las descripciones que lee el agente, en inglés. Tú no llamas a las herramientas: pides lo que necesitas con tus palabras, y el agente las elige.
+Este servidor tiene **4 herramientas**. Esta página se genera a partir del propio servidor, así que las muestra tal como las recibe tu aplicación de IA, con las descripciones que lee el agente (él las lee en inglés; aquí van traducidas). Tú no llamas a las herramientas: pides lo que necesitas con tus palabras, y el agente las elige.
 
 | Herramienta | Qué hace | Solo lee |
 | --- | --- | :-: |
-| [`list_h5p_types`](#list-h5p-types) | List the H5P content types | ✓ |
-| [`build_h5p`](#build-h5p) | Build an H5P package |  |
-| [`read_h5p`](#read-h5p) | Read an H5P package | ✓ |
-| [`server_info`](#server-info) | Server info | ✓ |
+| [`list_h5p_types`](#list-h5p-types) | Listar los tipos de contenido H5P | ✓ |
+| [`build_h5p`](#build-h5p) | Crear un paquete H5P |  |
+| [`read_h5p`](#read-h5p) | Leer un paquete H5P | ✓ |
+| [`server_info`](#server-info) | Información del servidor | ✓ |
 
 ## `list_h5p_types` {#list-h5p-types}
 
-**List the H5P content types**
+**Listar los tipos de contenido H5P**
 
-List the H5P content types this server builds packages for: each one's library and pinned version, what it's for and, for the types that hold others (Question Set, Course Presentation), the types that go inside (parts). Pass type to get its fields: the shape of the content build_h5p takes for it, with each field's kind, whether it's required, its limits, its options and the HTML tags it allows. Buttons and messages aren't listed: build_h5p fills them in the package's language. Images and other media aren't supported yet. Read the fields of each type before writing its content, and of each part you put inside another.
+Lista los tipos de contenido H5P para los que este servidor crea paquetes: la librería y la versión fijada de cada uno, para qué sirve y, en los tipos que contienen otros (Question Set, Course Presentation), los tipos que van dentro (parts). Con type, da sus campos: la forma del contenido que build_h5p recibe para él, con la clase de cada campo, si es obligatorio, sus límites, sus opciones y las etiquetas HTML que admite. Los botones y mensajes no aparecen: build_h5p los rellena en el idioma del paquete. Las imágenes y otros medios aún no se admiten. Hay que leer los campos de cada tipo antes de escribir su contenido, y los de cada parte que se meta dentro de otro.
 
 | Entrada | Obligatoria | Tipo | Descripción |
 | --- | :-: | --- | --- |
-| `type` |  | string | A content type or part, such as H5P.MultiChoice, to get its fields; leave it out for the list |
+| `type` |  | string | Un tipo de contenido o una parte, como H5P.MultiChoice, para obtener sus campos; sin él, la lista |
 
 ## `build_h5p` {#build-h5p}
 
-**Build an H5P package**
+**Crear un paquete H5P**
 
-Build a content-only .h5p package (h5p.json and content/content.json, no libraries) from content written for one of list_h5p_types' types, in the shape its fields give. The content is checked first, with the rules a site applies when it deploys the package (required fields, kinds, limits, the HTML tags each text allows) and the type's own (a multiple choice with a right answer, a blank with its answer…); if anything is wrong nothing is written and the error lists what to fix. Plain text is escaped; where a field takes HTML, simple HTML with its allowed tags may be used. Buttons and messages are filled in the package's language. Writes &#60;destDir&#62;/&#60;name&#62;.h5p and, unless preview is false, &#60;name&#62;.preview.html next to it: the content as a page to review before uploading. Confirm with the person before overwriting. The package plays only on a site with that type installed at that version; uploading it is another tool's job.
+Crea un paquete .h5p solo con contenido (h5p.json y content/content.json, sin librerías) a partir del contenido escrito para uno de los tipos de list_h5p_types, con la forma que dan sus campos. Primero se comprueba el contenido, con las reglas que aplica un sitio al desplegar el paquete (campos obligatorios, clases, límites, las etiquetas HTML que admite cada texto) y las del propio tipo (una opción múltiple con una respuesta correcta, un hueco con su respuesta…); si algo está mal, no se escribe nada y el error lista qué corregir. El texto plano se escapa; donde un campo admite HTML, se puede usar HTML sencillo con sus etiquetas permitidas. Los botones y mensajes se rellenan en el idioma del paquete. Escribe &#60;destDir&#62;/&#60;name&#62;.h5p y, salvo que preview sea false, &#60;name&#62;.preview.html a su lado: el contenido como una página para revisarlo antes de subirlo. Hay que confirmarlo con la persona antes de sobrescribir. El paquete solo se reproduce en un sitio que tenga ese tipo instalado en esa versión; subirlo es trabajo de otra herramienta.
 
 | Entrada | Obligatoria | Tipo | Descripción |
 | --- | :-: | --- | --- |
-| `type` | ✅ | string | The content type, such as H5P.MultiChoice (from list_h5p_types) |
-| `title` | ✅ | string | The package's title, as the site will show it |
-| `language` | ✅ | string | The content's language code, such as es or en: its buttons and messages come in it |
-| `content` | ✅ | object | The content, in the shape list_h5p_types gives for the type |
-| `destDir` | ✅ | string | An existing folder to write the package in (absolute path) |
-| `name` |  | string | The file name without .h5p; by default made from the title |
-| `overwrite` |  | boolean | Replace the package and preview if they exist; only once the person agrees |
-| `preview` |  | boolean | Write the HTML preview next to the package (default true) |
+| `type` | ✅ | string | El tipo de contenido, como H5P.MultiChoice (de list_h5p_types) |
+| `title` | ✅ | string | El título del paquete, tal como lo mostrará el sitio |
+| `language` | ✅ | string | El código del idioma del contenido, como es o en: sus botones y mensajes salen en él |
+| `content` | ✅ | object | El contenido, con la forma que da list_h5p_types para el tipo |
+| `destDir` | ✅ | string | Una carpeta existente donde escribir el paquete (ruta absoluta) |
+| `name` |  | string | El nombre del archivo sin .h5p; por defecto, sale del título |
+| `overwrite` |  | boolean | Sustituir el paquete y la vista previa si existen; solo cuando la persona esté de acuerdo |
+| `preview` |  | boolean | Escribir la vista previa HTML junto al paquete (por defecto, true) |
 
 ## `read_h5p` {#read-h5p}
 
-**Read an H5P package**
+**Leer un paquete H5P**
 
-Read what a local .h5p package holds: its type and version, title, language and its content, in the same shape build_h5p takes, so it can be reviewed, or changed and built again with build_h5p. Packages that bring their libraries are read too (their content only; libraries lists them). supported says whether build_h5p builds this type at this version. Only reads.
+Lee lo que contiene un paquete .h5p local: su tipo y versión, título, idioma y su contenido, con la misma forma que recibe build_h5p, para revisarlo, o cambiarlo y volver a crearlo con build_h5p. También lee los paquetes que traen sus librerías (solo su contenido; libraries las enumera). supported dice si build_h5p crea este tipo en esta versión. Solo lee.
 
 | Entrada | Obligatoria | Tipo | Descripción |
 | --- | :-: | --- | --- |
-| `path` | ✅ | string | The .h5p file (absolute path) |
+| `path` | ✅ | string | El archivo .h5p (ruta absoluta) |
 
 ## `server_info` {#server-info}
 
-**Server info**
+**Información del servidor**
 
-Show this server's name, version and data folder, and, for a server that needs programs installed apart, whether they're there. Contains no secrets.
+Muestra el nombre, la versión y la carpeta de datos de este servidor y, si el servidor necesita programas instalados aparte, si están. No contiene secretos.
 
 *Sin entradas.*
