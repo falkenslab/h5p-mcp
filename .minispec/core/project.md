@@ -8,4 +8,4 @@
 - **For whom**: teachers and students, through Falken's Lab's agents (miyagi for teachers) or any MCP client.
 - **How it reaches agents**: as the `h5p` extension in [agent-extensions](https://github.com/falkenslab/agent-extensions) (its issue #10), which pins its version, adds the skills to use it well and declares the `h5p-authoring` capability. Uploading a package to Moodle is moodle-teacher's (`create_activity` with `type: "h5pactivity"`), not this server's.
 - **Out of scope**: uploading or publishing anywhere, installing content types on a site, H5P's player or editor, and the craft of writing good questions, which belongs to the agent.
-- **Where it stands**: the template, renamed; the work is `.minispec/features/h5p-packages.md`.
+- **Where it stands**: `list_h5p_types`, `build_h5p` and `read_h5p` for the eight types, tried on moodle-sandbox 5.2; not on npm yet.

@@ -7,11 +7,51 @@ sidebar_label: Herramientas
 
 # Herramientas
 
-Este servidor tiene **1 herramientas**. Esta página se genera a partir del propio servidor, así que las muestra tal como las recibe tu aplicación de IA, con las descripciones que lee el agente, en inglés. Tú no llamas a las herramientas: pides lo que necesitas con tus palabras, y el agente las elige.
+Este servidor tiene **4 herramientas**. Esta página se genera a partir del propio servidor, así que las muestra tal como las recibe tu aplicación de IA, con las descripciones que lee el agente, en inglés. Tú no llamas a las herramientas: pides lo que necesitas con tus palabras, y el agente las elige.
 
 | Herramienta | Qué hace | Solo lee |
 | --- | --- | :-: |
+| [`list_h5p_types`](#list-h5p-types) | List the H5P content types | ✓ |
+| [`build_h5p`](#build-h5p) | Build an H5P package |  |
+| [`read_h5p`](#read-h5p) | Read an H5P package | ✓ |
 | [`server_info`](#server-info) | Server info | ✓ |
+
+## `list_h5p_types` {#list-h5p-types}
+
+**List the H5P content types**
+
+List the H5P content types this server builds packages for: each one's library and pinned version, what it's for and, for the types that hold others (Question Set, Course Presentation), the types that go inside (parts). Pass type to get its fields: the shape of the content build_h5p takes for it, with each field's kind, whether it's required, its limits, its options and the HTML tags it allows. Buttons and messages aren't listed: build_h5p fills them in the package's language. Images and other media aren't supported yet. Read the fields of each type before writing its content, and of each part you put inside another.
+
+| Entrada | Obligatoria | Tipo | Descripción |
+| --- | :-: | --- | --- |
+| `type` |  | string | A content type or part, such as H5P.MultiChoice, to get its fields; leave it out for the list |
+
+## `build_h5p` {#build-h5p}
+
+**Build an H5P package**
+
+Build a content-only .h5p package (h5p.json and content/content.json, no libraries) from content written for one of list_h5p_types' types, in the shape its fields give. The content is checked first, with the rules a site applies when it deploys the package (required fields, kinds, limits, the HTML tags each text allows) and the type's own (a multiple choice with a right answer, a blank with its answer…); if anything is wrong nothing is written and the error lists what to fix. Plain text is escaped; where a field takes HTML, simple HTML with its allowed tags may be used. Buttons and messages are filled in the package's language. Writes &#60;destDir&#62;/&#60;name&#62;.h5p and, unless preview is false, &#60;name&#62;.preview.html next to it: the content as a page to review before uploading. Confirm with the person before overwriting. The package plays only on a site with that type installed at that version; uploading it is another tool's job.
+
+| Entrada | Obligatoria | Tipo | Descripción |
+| --- | :-: | --- | --- |
+| `type` | ✅ | string | The content type, such as H5P.MultiChoice (from list_h5p_types) |
+| `title` | ✅ | string | The package's title, as the site will show it |
+| `language` | ✅ | string | The content's language code, such as es or en: its buttons and messages come in it |
+| `content` | ✅ | object | The content, in the shape list_h5p_types gives for the type |
+| `destDir` | ✅ | string | An existing folder to write the package in (absolute path) |
+| `name` |  | string | The file name without .h5p; by default made from the title |
+| `overwrite` |  | boolean | Replace the package and preview if they exist; only once the person agrees |
+| `preview` |  | boolean | Write the HTML preview next to the package (default true) |
+
+## `read_h5p` {#read-h5p}
+
+**Read an H5P package**
+
+Read what a local .h5p package holds: its type and version, title, language and its content, in the same shape build_h5p takes, so it can be reviewed, or changed and built again with build_h5p. Packages that bring their libraries are read too (their content only; libraries lists them). supported says whether build_h5p builds this type at this version. Only reads.
+
+| Entrada | Obligatoria | Tipo | Descripción |
+| --- | :-: | --- | --- |
+| `path` | ✅ | string | The .h5p file (absolute path) |
 
 ## `server_info` {#server-info}
 

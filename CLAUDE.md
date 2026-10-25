@@ -13,6 +13,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run typecheck`, `npm run lint`, `npm test` (all tests), `npm test -- test/requirements.test.ts` (one file).
 - `npm run check` starts the bundle and checks its `tools/list` strictly: every tool with a title, a description, both schemas and `readOnlyHint`.
 - `npm run inspect` opens the MCP Inspector on the bundle.
+- `node scripts/fetch-libraries.mjs` refreshes `src/h5p/libraries/` from H5P's hub (semantics and translated defaults); only when a pinned version changes (ADR-005), with the versions in the script and in `test/h5p/libraries.test.ts`.
 - Docs: `cd docs && npm install`, `npm run tools` (the tools reference from the bundle; build the server first), `npm start` (English) or `npm run start:es`, `npm run build`.
 - Releasing: bump the version, update `docs/content/releases.md` and its Spanish page, commit, tag `v<x.y.z>`, push; the owner runs `npm publish` (`prepublishOnly` runs every check). Then pin the new version in the extension's `.mcp.json` in agent-extensions.
 

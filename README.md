@@ -12,6 +12,8 @@ Multiple choice, true/false, fill in the blanks, drag the words, cards, question
 ![Status: in development](https://img.shields.io/badge/status-in%20development-d97706)
 [![License: MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
 
+**[📖 Documentation](https://falkenslab.github.io/h5p-mcp/)** · [📖 Documentación en español](https://falkenslab.github.io/h5p-mcp/es/)
+
 </div>
 
 h5p-mcp is an MCP server that turns content an AI agent writes (questions and their answers, cards, slides) into an `.h5p` package on your computer, checked against its content type before it's written, and reads one back to review or reuse it. The packages carry only their content, not H5P's code, so they're small and play on any site that has the content type, such as a Moodle with its H5P activity. It uploads nothing: in Moodle, the moodle-teacher extension does that. **It's in development and not on npm yet.**
@@ -24,17 +26,34 @@ h5p-mcp is an MCP server that turns content an AI agent writes (questions and th
 - 👀 **Reviewed before uploading.** A plain preview of the questions, options and cards, without H5P's player.
 - 🪶 **Nothing else on your computer.** One bundled file run with `npx`; no H5P code to install or keep up to date.
 
-## 🧰 What's inside (planned)
+## 💬 What you can ask
+
+👩‍🏫 As a teacher:
+
+- "Make me a ten-question quiz on the water cycle, as an H5P package in my Downloads folder."
+- "Turn these vocabulary pairs into Dialog Cards, in Spanish."
+- "Read this .h5p and add two harder questions to it."
+
+## 🧰 What's inside
 
 | Area | For example |
 | --- | --- |
 | 🧩 Content types | `H5P.MultiChoice`, `H5P.TrueFalse`, `H5P.Blanks`, `H5P.DragText`, `H5P.Dialogcards`, `H5P.Flashcards`, `H5P.QuestionSet`, `H5P.CoursePresentation` |
-| 🛠️ Tools | `list_h5p_types`, `build_h5p`, `read_h5p`, and a preview of a package |
+| 🛠️ Tools | `list_h5p_types` (the types and their fields), `build_h5p` (the package and its preview), `read_h5p` (a package's content) |
+| 🌍 Languages | Buttons and messages in the package's language, from each type's own translations (about fifty languages) |
 | 🔌 For agents | The `h5p` extension in [agent-extensions](https://github.com/falkenslab/agent-extensions), with its skills and the `h5p-authoring` capability |
+
+The [tools reference](https://falkenslab.github.io/h5p-mcp/reference/tools) has every tool with the description the agent reads.
+
+## 📚 Documentation
+
+- **[Getting started](https://falkenslab.github.io/h5p-mcp/getting-started)**: install it in your AI app.
+- **[Building packages](https://falkenslab.github.io/h5p-mcp/packages)**: the content types, what is checked, languages and what isn't supported yet.
+- **[Tools](https://falkenslab.github.io/h5p-mcp/reference/tools)**: every tool, with the description the agent reads.
 
 ## 🛠️ Developing
 
-The plan is in [`.minispec/features/h5p-packages.md`](.minispec/features/h5p-packages.md) and the main decision in [ADR-005](.minispec/decisions/ADR-005-content-only-packages.md); `CLAUDE.md` lists every command. `npm run build`, `npm test` and `npm run check` before every commit. Releases are published to npm by the owner.
+The design is in [`.minispec/`](.minispec/README.md) and the main decision in [ADR-005](.minispec/decisions/ADR-005-content-only-packages.md); `CLAUDE.md` lists every command. `npm run build`, `npm test` and `npm run check` before every commit. Releases are published to npm by the owner.
 
 <div align="center">
 
