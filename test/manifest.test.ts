@@ -10,11 +10,7 @@ describe("package.json", () => {
     assert.equal(manifest.publishConfig?.access, "public");
   });
 
-  it("keeps the template's guard where npm run init can remove it", () => {
-    // The template is private so it can't be published by mistake; scripts/init.mjs removes this exact line.
-    if (manifest.private !== undefined) {
-      assert.equal(manifest.private, true);
-      assert.match(text, /\n {2}"private": true,/);
-    }
+  it("isn't private: it's a server, published by its owner", () => {
+    assert.equal(manifest.private, undefined);
   });
 });

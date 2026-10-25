@@ -1,17 +1,16 @@
 {
-  "name": "@falkenslab/mcp-server-template",
+  "name": "@falkenslab/h5p-mcp",
   "version": "0.0.0",
-  "private": true,
-  "description": "A Falken's Lab MCP server.",
+  "description": "Content-only H5P packages for AI agents: built, validated and read locally.",
   "license": "MIT",
   "author": "Falken's Lab",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/falkenslab/mcp-server-template.git"
+    "url": "git+https://github.com/falkenslab/h5p-mcp.git"
   },
-  "homepage": "https://falkenslab.github.io/mcp-server-template/",
+  "homepage": "https://falkenslab.github.io/h5p-mcp/",
   "bugs": {
-    "url": "https://github.com/falkenslab/mcp-server-template/issues"
+    "url": "https://github.com/falkenslab/h5p-mcp/issues"
   },
   "keywords": [
     "mcp",
@@ -20,7 +19,7 @@
   ],
   "type": "module",
   "bin": {
-    "mcp-server-template": "dist/server.mjs"
+    "h5p-mcp": "dist/server.mjs"
   },
   "files": [
     "dist/server.mjs"
@@ -32,7 +31,6 @@
     "node": ">=20"
   },
   "scripts": {
-    "init": "node scripts/init.mjs",
     "build": "node scripts/build.mjs",
     "dev": "node scripts/build.mjs --watch",
     "typecheck": "tsc --noEmit",

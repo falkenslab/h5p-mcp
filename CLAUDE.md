@@ -4,9 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`@falkenslab/mcp-server-template`: A Falken's Lab MCP server. An MCP server over stdio, bundled into one file and run with `npx`; agents built on agent-kit get it through its extension in [agent-kit-extensions](https://github.com/falkenslab/agent-kit-extensions). Read `.minispec/README.md` first: it says what to read for each task.
+`@falkenslab/h5p-mcp`: Content-only H5P packages for AI agents: built, validated and read locally. An MCP server over stdio, bundled into one file and run with `npx`; agents built on agent-kit get it through its extension in [agent-extensions](https://github.com/falkenslab/agent-extensions). Read `.minispec/README.md` first: it says what to read for each task.
 
-If this is still the template (`package.json` says `"private": true`), turn it into a server with `npm run init -- <name> "<description>"`, then rewrite `.minispec/core/project.md` and the README for it.
 
 ## Commands
 
@@ -15,7 +14,7 @@ If this is still the template (`package.json` says `"private": true`), turn it i
 - `npm run check` starts the bundle and checks its `tools/list` strictly: every tool with a title, a description, both schemas and `readOnlyHint`.
 - `npm run inspect` opens the MCP Inspector on the bundle.
 - Docs: `cd docs && npm install`, `npm run tools` (the tools reference from the bundle; build the server first), `npm start` (English) or `npm run start:es`, `npm run build`.
-- Releasing: bump the version, update `docs/content/releases.md` and its Spanish page, commit, tag `v<x.y.z>`, push; the owner runs `npm publish` (`prepublishOnly` runs every check). Then pin the new version in the extension's `.mcp.json` in agent-kit-extensions.
+- Releasing: bump the version, update `docs/content/releases.md` and its Spanish page, commit, tag `v<x.y.z>`, push; the owner runs `npm publish` (`prepublishOnly` runs every check). Then pin the new version in the extension's `.mcp.json` in agent-extensions.
 
 ## How it fits
 

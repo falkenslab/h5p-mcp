@@ -1,18 +1,18 @@
 ---
 name: release
-description: Cut a mcp-server-template release - decide the semver bump from the commits since the last tag, bump the version, write the release notes in the docs, commit, tag, push and create the GitHub release; the owner publishes to npm, then the extension in agent-kit-extensions pins the new version. Only when the owner explicitly asks to release or publish.
+description: Cut a h5p-mcp release - decide the semver bump from the commits since the last tag, bump the version, write the release notes in the docs, commit, tag, push and create the GitHub release; the owner publishes to npm, then the extension in agent-extensions pins the new version. Only when the owner explicitly asks to release or publish.
 disable-model-invocation: true
 ---
 
-# Release mcp-server-template
+# Release h5p-mcp
 
-A release is a version commit, a `vX.Y.Z` tag on `main`, a GitHub release and the same version on npm as `@falkenslab/mcp-server-template`. Nothing is published or pushed without the owner asking.
+A release is a version commit, a `vX.Y.Z` tag on `main`, a GitHub release and the same version on npm as `@falkenslab/h5p-mcp`. Nothing is published or pushed without the owner asking.
 
 ## 1. Preconditions
 
 Stop and report at the first that fails:
 
-- No `"private": true` in `package.json`: with it, this is still the template, which isn't released (`npm run init` removes it).
+- No `"private": true` in `package.json`.
 - `"publishConfig": { "access": "public" }` in `package.json`: without it, npm publishes the scoped package as private and refuses with 402 Payment Required.
 - On `main`, working tree clean, up to date with `origin/main` (`git fetch && git status -sb`). No remote yet: stop and ask.
 - The `verify` skill is green, the site included.
@@ -48,4 +48,4 @@ Ask the owner to run `npm publish` themselves (with their one-time code; `prepub
 
 ## 6. Pin it in the extension
 
-Once `npm view @falkenslab/mcp-server-template version` shows it, the extension in agent-kit-extensions pins it: `npx -y @falkenslab/mcp-server-template@X.Y.Z` in its `.mcp.json`, and its `plugin.json` requirements copied from `src/requirements.ts` if they changed. That's a change in that repository, from its own session unless the owner asks for it here. Report the version, tag, release URL and npm page.
+Once `npm view @falkenslab/h5p-mcp version` shows it, the extension in agent-extensions pins it: `npx -y @falkenslab/h5p-mcp@X.Y.Z` in its `.mcp.json`, and its `plugin.json` requirements copied from `src/requirements.ts` if they changed. That's a change in that repository, from its own session unless the owner asks for it here. Report the version, tag, release URL and npm page.

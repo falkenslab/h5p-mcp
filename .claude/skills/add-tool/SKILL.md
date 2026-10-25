@@ -1,9 +1,9 @@
 ---
 name: add-tool
-description: Checklist for adding or changing a mcp-server-template tool - where the domain logic goes, how the tool file is written (name, schemas, annotations, description, reply), registering it, requirements, tests, the strict check and the docs to update. Use when adding a tool, or changing one's inputs, outputs or behavior.
+description: Checklist for adding or changing a h5p-mcp tool - where the domain logic goes, how the tool file is written (name, schemas, annotations, description, reply), registering it, requirements, tests, the strict check and the docs to update. Use when adding a tool, or changing one's inputs, outputs or behavior.
 ---
 
-# Adding a mcp-server-template tool
+# Adding a h5p-mcp tool
 
 ## 1. The domain's logic goes in its own module
 
@@ -19,7 +19,7 @@ Copy the shape of `src/tools/serverInfo.ts`: one file in `src/tools/`, exporting
 - **Schemas** with zod: every input `.describe()`d for an agent; an `outputSchema` matching what the handler returns. No nullable types and no unions of types: an optional field instead, which every client accepts.
 - **Annotations**, always: `readOnlyHint: true` only when it changes nothing (agent-kit's plan mode calls those); for writes `readOnlyHint: false` plus `destructiveHint` and `idempotentHint`; `openWorldHint: true` when it talks to anything outside the machine.
 - **Handler**: `async (input) => reply(await doTheWork(input))`. Long lists take `limit` and `offset` and return `more`.
-- **A program installed apart** (Docker, ffmpeg…): add it to `REQUIREMENTS` in `src/requirements.ts` and start the handler with `await needs("<program>")` (ADR-004). Copy the requirement into the extension's `plugin.json` in agent-kit-extensions (`metadata["agent-kit"].requirements`).
+- **A program installed apart** (Docker, ffmpeg…): add it to `REQUIREMENTS` in `src/requirements.ts` and start the handler with `await needs("<program>")` (ADR-004). Copy the requirement into the extension's `plugin.json` in agent-extensions (`metadata["agent-kit"].requirements`).
 - **Settings**: `setting("<VARIABLE>")` from `src/settings.ts`, never `process.env`. A required one that's missing (or arrived as an unexpanded `${user_config.*}`, as in Codex) makes the tool fail with what to set and how, never the server at startup.
 - **State or caches**: under `dataDir()`. Logs: stderr only.
 

@@ -6,13 +6,13 @@ import type * as Preset from "@docusaurus/preset-classic";
 // The released versions' docs are snapshots (versions.json, made on each release); the current docs
 // are the next release's, shown as such until one is cut.
 const released = existsSync(new URL("./versions.json", import.meta.url));
-const NAME = "mcp-server-template";
+const NAME = "h5p-mcp";
 const REPO = `https://github.com/falkenslab/${NAME}`;
 const NPM = `https://www.npmjs.com/package/@falkenslab/${NAME}`;
 
 const config: Config = {
   title: NAME,
-  tagline: "A Falken's Lab MCP server.",
+  tagline: "Content-only H5P packages for AI agents: built, validated and read locally.",
   favicon: "img/logo.svg",
 
   url: "https://falkenslab.github.io",

@@ -12,23 +12,23 @@ You need [Node.js](https://nodejs.org) 20 or later.
 Install its extension from Falken's Lab's marketplace, which runs this server at a fixed version and adds the skills to use it well:
 
 ```bash
-my-agent extension marketplace add falkenslab/agent-kit-extensions
-my-agent extension add mcp-server-template@falkenslab
+my-agent extension marketplace add falkenslab/agent-extensions
+my-agent extension add h5p-mcp@falkenslab
 ```
 
 ## In Claude Code
 
 ```bash
-claude mcp add mcp-server-template -- npx -y @falkenslab/mcp-server-template
+claude mcp add h5p-mcp -- npx -y @falkenslab/h5p-mcp
 ```
 
 Or, with its skills, as a plugin from the same marketplace:
 
 ```bash
-claude plugin marketplace add falkenslab/agent-kit-extensions
-claude plugin install mcp-server-template@falkenslab
+claude plugin marketplace add falkenslab/agent-extensions
+claude plugin install h5p-mcp@falkenslab
 ```
 
 ## Checking it works
 
-Ask the agent: "Which version of mcp-server-template are you using?" It calls `server_info`.
+Ask the agent: "Which version of h5p-mcp are you using?" It calls `server_info`.

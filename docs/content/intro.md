@@ -4,9 +4,9 @@ sidebar_label: Introduction
 slug: /
 ---
 
-# mcp-server-template
+# h5p-mcp
 
-A Falken's Lab MCP server.
+Content-only H5P packages for AI agents: built, validated and read locally.
 
 It's an [MCP](https://modelcontextprotocol.io) server: an AI app (Claude Code, Claude Desktop, an agent built on [agent-kit](https://falkenslab.github.io/agent-kit/)) starts it and gets its tools. You don't call the tools yourself: you ask in your own words, and the agent picks them.
 
