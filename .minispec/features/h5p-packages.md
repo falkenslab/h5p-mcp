@@ -1,4 +1,5 @@
 # Building and reading H5P packages
+
 Issue: [#1](https://github.com/falkenslab/h5p-mcp/issues/1)
 
 ## Goal
