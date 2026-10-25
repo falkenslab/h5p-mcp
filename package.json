@@ -1,6 +1,6 @@
 {
   "name": "@falkenslab/h5p-mcp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Content-only H5P packages for AI agents: built, validated and read locally.",
   "license": "MIT",
   "author": "Falken's Lab",

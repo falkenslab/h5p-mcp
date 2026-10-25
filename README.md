@@ -9,14 +9,14 @@ Multiple choice, true/false, fill in the blanks, drag the words, cards, question
 
 ![Node.js 20+](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)
 ![MCP server](https://img.shields.io/badge/MCP-server-0b0b0b)
-![Status: in development](https://img.shields.io/badge/status-in%20development-d97706)
+[![npm](https://img.shields.io/npm/v/@falkenslab/h5p-mcp?color=cb3837&logo=npm)](https://www.npmjs.com/package/@falkenslab/h5p-mcp)
 [![License: MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
 
 **[📖 Documentation](https://falkenslab.github.io/h5p-mcp/)** · [📖 Documentación en español](https://falkenslab.github.io/h5p-mcp/es/)
 
 </div>
 
-h5p-mcp is an MCP server that turns content an AI agent writes (questions and their answers, cards, slides) into an `.h5p` package on your computer, checked against its content type before it's written, and reads one back to review or reuse it. The packages carry only their content, not H5P's code, so they're small and play on any site that has the content type, such as a Moodle with its H5P activity. It uploads nothing: in Moodle, the moodle-teacher extension does that. **It's in development and not on npm yet.**
+h5p-mcp is an MCP server that turns content an AI agent writes (questions and their answers, cards, slides) into an `.h5p` package on your computer, checked against its content type before it's written, and reads one back to review or reuse it. The packages carry only their content, not H5P's code, so they're small and play on any site that has the content type, such as a Moodle with its H5P activity. It uploads nothing: in Moodle, the moodle-teacher extension does that.
 
 ## ✨ Why h5p-mcp
 
@@ -25,6 +25,16 @@ h5p-mcp is an MCP server that turns content an AI agent writes (questions and th
 - 🔁 **Read back.** An existing package's content, in the same shape, to review it, change it and build it again.
 - 👀 **Reviewed before uploading.** A plain preview of the questions, options and cards, without H5P's player.
 - 🪶 **Nothing else on your computer.** One bundled file run with `npx`; no H5P code to install or keep up to date.
+
+## 🚀 Quick start
+
+With [Node.js](https://nodejs.org) 20 or later, add it to Claude Code:
+
+```bash
+claude mcp add h5p-mcp -- npx -y @falkenslab/h5p-mcp
+```
+
+Then ask for an activity. Other AI apps, and agents built on agent-kit, are in [Getting started](https://falkenslab.github.io/h5p-mcp/getting-started).
 
 ## 💬 What you can ask
 
